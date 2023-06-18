@@ -1,0 +1,199 @@
+@import "./variables.scss";
+
+html, body, #root {
+    height: 100%;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+button {
+    cursor: pointer;
+}
+
+* {
+    font-family: "Inter",Helvetica,Arial,sans-serif;
+}
+
+body {
+    background-color: $dark-background-color;
+    margin: 0;
+}
+
+.chat {
+    box-sizing: border-box;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px $border-color;
+    width: $chat-width;
+    height: 100%;
+
+    & header {
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 5rem;
+        min-height: 5rem;
+        padding: 0 1rem;
+        color: $header-text-color;
+        text-transform: uppercase;
+        border-bottom: solid 1px $border-color;
+        
+        & h4 {
+            font-weight: $font-weight-semibold;
+            font-size: $text-font-size;
+            margin: 0;
+        }
+    }
+
+    & section {
+        position: relative;
+        flex-grow: 1;
+        overflow: hidden;
+        padding-bottom: 1rem;
+
+        & .message-list {
+            height: 100%;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            line-height: $message-line-height;
+        }
+
+        & .message {
+            padding: 0 1rem;
+            
+            &Content {
+                padding: 0.5rem 1rem;
+                color: $primary-text-color;
+                font-weight: $font-weight-normal;
+                font-size: $text-font-size;
+                border-radius: $primary-border-radius;
+
+                & span {
+                    font-weight: $font-weight-bold;
+                }
+
+                &:hover {
+                    background-color: $dark-background-color-hover;
+                }
+            }
+
+            &--welcome {
+                font-size: $text-font-size;
+                font-weight: $font-weight-normal;
+                padding: 0.5rem 2rem;
+                color: $secondary-text-color;
+            }
+        }
+
+        & .scrolling-handler {
+            box-sizing: border-box;
+            position: absolute;
+            width: 100%;
+            bottom: 2rem;
+            padding: 0 25px;
+            
+            &__button-content {
+                display: flex;
+
+                & svg {
+                    width: 20px;
+                    height: 20px;
+                    fill: $button-text-color;
+                    margin-left: 1rem;
+                }
+
+                & span {
+                    font-size: 1.2rem;
+                    font-weight: $font-weight-semibold;
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+
+            & button {
+                height: $button-height;
+                width: 100%;
+                border: solid 1px $overlay-border-color;
+                border-radius: $overlay-border-radius;
+                box-sizing: border-box;
+                background-color: $overlay-background-color;
+                color: $button-text-color;
+                padding: 0;
+
+                &:hover {
+                    background-color: $overlay-background-color-hover;
+                }
+            }
+        }
+    }
+
+    & footer {
+        padding: 0 1rem 1rem 1rem;
+
+        & textarea {
+            box-sizing: border-box;
+            color: $primary-text-color;
+            width: 100%;
+            padding: 1rem;
+            box-shadow: inset 0 0 0 1px $border-color-hover;
+            background-color: $dark-background-color;
+            border-radius: $input-border-radius;
+            appearance: none;
+            resize: none;
+            border: solid 0px transparent;
+            line-height: 1.5;
+            background-clip: padding-box;
+
+            &:hover {
+                outline: none;
+                border-color: $border-color-hover;
+                box-shadow: inset 0 0 0 2px $border-color-hover;
+            }
+
+            &:focus-visible {
+                outline: none;
+            }
+
+            &:focus {
+                box-shadow: 0 0 0 2px $input-focus-border-color, inset 0 0 0 2px $input-focus-border-color;
+            }
+
+            &::placeholder {
+                color: $secondary-text-color;
+            }
+        }
+
+        & .chat-button-box {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: flex-end;
+
+            & button {
+                color: $button-text-color;
+                background-color: $button-background-color;
+                border-radius: $primary-border-radius;
+                height: $button-height;
+                border: none;
+                padding: 0;
+
+                &:hover {
+                    background-color: $button-background-color-hover;
+                }
+
+                &:active {
+                    background-color: $button-background-color-hover;
+                }
+
+                & span {
+                    padding: 0 1rem;
+                }
+            }
+        }
+    }
+}
