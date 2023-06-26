@@ -9,13 +9,16 @@ const SendMessageBox = ({ socket }: SendMessageBoxProps) => {
     const [messageToSend, setMessageToSend] = useState<string>("");
 
     const onSendMessage = () => {
-        socket?.emit("send-message", {
-            type: MessageType.TEXT,
-            text: messageToSend,
-            user: { username: import.meta.env.VITE_CONNECTED_USER_NAME, color: import.meta.env.VITE_CONNECTED_USER_COLOR },
-            date: Date.now()
-        } as Message);
-        setMessageToSend("");
+        const text = messageToSend.trimStart();
+        if (text.length > 0) {
+            socket?.emit("send-message", {
+                type: MessageType.TEXT,
+                text,
+                user: { username: import.meta.env.VITE_CONNECTED_USER_NAME, color: import.meta.env.VITE_CONNECTED_USER_COLOR },
+                date: Date.now()
+            } as Message);
+            setMessageToSend("");
+        }
     };
 
     const sendOnEnterKey = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
