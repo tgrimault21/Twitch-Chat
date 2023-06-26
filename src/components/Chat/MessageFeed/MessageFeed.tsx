@@ -27,7 +27,7 @@ const MessageFeed = ({ socket }: MessageFeedProps) => {
     }, [hasChatScrolled]);
 
     const onMessageListScroll = ({ currentTarget: { scrollTop, scrollHeight, clientHeight } }: React.BaseSyntheticEvent<UIEvent, EventTarget & HTMLDivElement, EventTarget> ) => {
-        setHasChatScrolled(scrollTop + clientHeight !== scrollHeight);
+        setHasChatScrolled(Math.abs(scrollHeight - (scrollTop + clientHeight)) > 5);
     };
 
     return (
